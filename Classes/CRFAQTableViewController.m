@@ -70,6 +70,8 @@ static NSString *kCellIdentifierForAnswer			= @"AnswerCell";
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
 	float height = 56.0f;
 	for (int i = 0; i < [self numberOfQuestions]; i++) {
 		height += [self tableView:self.indexTableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
@@ -136,7 +138,7 @@ static NSString *kCellIdentifierForAnswer			= @"AnswerCell";
 {
 	float width = CGRectGetWidth(tableView.frame) - (2 * 15); // don't forget the margins
 	NSString *text;
-	UIFont *font;
+	UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]]; // Use system fonts as default
 	
 	if (tableView == self.answersTableView) {
 		text = [self answerTextForQuestion:self.questions[indexPath.section]];
